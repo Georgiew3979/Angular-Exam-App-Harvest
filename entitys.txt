@@ -1,0 +1,62 @@
+Field
+	id	
+	name: string
+	location: string
+	width: number
+	height: number
+	agrocultures: [Culture]
+	productionYear: Date
+	actions: [Action]
+	harvests: [Harvest]
+	
+Culture
+	id
+	name: string
+	model?: string
+	producer: string
+	type: enum [forFood, technical, forHealtn, forBeuaty ]
+	timeOfSeed: Date
+	productivity: number
+	harvests: [Harvest]
+	
+	
+Action:
+	id
+	name: enum [seeding, destroy, manure, mulch, plevene, praskane, wyrzwane, picowane, create, ]
+	date: Date
+	field: Field
+	culture?: Culture
+	materials?: {type:quantity}
+	workers: [User]
+	workTime: Time
+	
+Harvest:
+	id
+	name: string
+	field: Field
+	culture: Culture
+	date: Date
+	quantity: number
+	quality: string
+	workers: [User]
+	workTime: Time
+	
+User
+	id
+	name: string
+	occupation: string
+	role: string
+	actions: [Action]
+	harvests: [Harvest]
+	sells: [Sell]
+	
+Sell
+	id
+	type: string
+	culture: Culture
+	quality?: string
+	quantity: number
+	price: number
+	buyer: User
+	date: Date
+	

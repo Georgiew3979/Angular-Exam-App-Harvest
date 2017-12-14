@@ -1,0 +1,23 @@
+<h1>Select a culture for Removing</h1>
+<div class="card-body">
+  <h4 class="card-title">{{fieldData?.name}} </h4>
+  <h6 class="card-subtitle mb-2 text-muted">Location: {{fieldData?.location}}</h6>
+  <div class="card-text">
+      <h6 class="card-subtitle mb-2">Current cultures:</h6>
+      <ul class="list-group list-group-flush" *ngFor="let culture of fieldData.agroCulture">
+        <app-culture (click)="selectData(culture)" [currentCulture]="culture" ></app-culture>
+      </ul>
+  </div> 
+</div>
+
+<form *ngIf="isSelectedCulture" (ngSubmit)="removeCultureFromFeild()" #registerForm="ngForm">
+    <button class="btn btn-success">Remove this culture - {{selectedName}}</button>
+</form>
+
+
+<div *ngIf="registerSuccess" class="alert alert-success">
+  Successfull Harvetsed Culture!
+</div>
+<div *ngIf="registerFail" class="alert alert-danger">
+  Some problems exists!
+</div>

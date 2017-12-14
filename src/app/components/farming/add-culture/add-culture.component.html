@@ -1,0 +1,41 @@
+<h1>Add new culture to be seeding:</h1>
+<div class="form-inline my-2 my-lg-0">
+    <label>Search for culture :</label>
+    <input (keyup)="cultureSearchString($event)" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+    
+</div>
+<div *ngIf="isSelectedCulture">
+  <td>
+      <button class="btn btn-success" (click)="addCultureToFeild()" >Add this culture - {{selectedName}}</button>
+  </td>
+    
+</div>
+ 
+<div class="row">
+    
+  <table class="col-md-6 table">
+    <thead class="thead-light">
+      <tr>
+        <th>Image and Name</th>
+      </tr>
+
+    </thead>
+    <tbody>
+      <tr *ngFor="let culture of cultureData | paginate: { itemsPerPage: 4, currentPage: p }">
+        <td>
+          <app-culture (click)="selectData(culture)" [currentCulture]="culture" [isAddCulture]="true"></app-culture>
+        </td>
+      </tr>
+
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+     
+    </tbody>
+  </table>
+  
+  </div>
+  <div *ngIf="registerSuccess" class="alert alert-success">
+      Successfull Registered Culture!
+    </div>
+    <div *ngIf="registerFail" class="alert alert-danger">
+        Some problems exists!
+    </div>

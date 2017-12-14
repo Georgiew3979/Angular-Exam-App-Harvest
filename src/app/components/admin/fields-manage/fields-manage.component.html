@@ -1,0 +1,35 @@
+<h1>Manage Fields</h1>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Field name</th>
+      <th>Location</th>
+      <th>Width</th>
+      <th>Length</th>
+      <th>ProductionYear</th>
+      <th>Created</th>
+      <th>Action</th>
+
+    </tr>
+  </thead>
+  <tbody>
+      <tr  *ngFor="let field of allFields | paginate: { itemsPerPage: 8, currentPage: p }; let i = index">
+        
+        <th scope="row">{{i + 1}}</th>
+        <td>{{field.name}}</td>
+        <td>{{field.location}}</td>
+        <td>{{field.width}}</td>
+        <td>{{field.length}}</td>
+        <td>{{field.productionYear}}</td>
+        <td>{{field._kmd.ect | date:'fullDate'}}</td>
+        <td>
+          <button (click)="deleteField(field)">Delete</button>
+          <button (click)="updateField(field)">Update fields</button>
+        </td>
+    </tr>
+    
+  </tbody>
+</table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+

@@ -1,0 +1,31 @@
+<h1>Manage Cultures</h1>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Culture name</th>
+      <th>Type</th>
+      <th>Images link</th>
+      <th>Registered</th>
+      <th>Action</th>
+
+    </tr>
+  </thead>
+  <tbody>
+      <tr  *ngFor="let culture of allCultures | paginate: { itemsPerPage: 8, currentPage: p }; let i = index">
+        
+        <th scope="row">{{i + 1}}</th>
+        <td>{{culture.name}}</td>
+        <td>{{culture.type}}</td>
+        <td><img class="rounded-circle" src="{{culture.imageLink}}" alt="imageLink"></td>
+        <td>{{culture._kmd.ect | date:'fullDate'}}</td>
+        <td>
+          <button (click)="deleteCulture(culture)" >Delete</button>
+          <button (click)="updateCulture(culture)">Update culture</button>
+        </td>
+    </tr>
+    
+  </tbody>
+</table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+

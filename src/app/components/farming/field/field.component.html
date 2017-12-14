@@ -1,0 +1,23 @@
+<div class="card">
+  <div class="card-body field">
+    <h4 class="card-title">{{currentData?.name}} - {{(currentData?.width *  currentData?.length) | number:'1.2-2'}} square meters</h4>
+    <h6 class="card-subtitle mb-2 text-muted">Location: {{currentData?.location}}</h6>
+    <h6 class="card-subtitle mb-2 text-muted float-md-right">Create on date: {{currentData._kmd?.ect | date:"fullDate"}}</h6>
+    <div class="card-text">
+        <h6 class="card-subtitle mb-2">Current cultures:</h6>
+        <ul class="list-group list-group-flush list-group-item-primary" *ngFor="let culture of currentData.agroCulture">
+           <app-culture [currentCulture]="culture" ></app-culture>
+           
+        </ul>
+      
+      
+      </div>
+      <div *ngIf="authService.isUserWorker() || authService.isUserAdmin()">
+          <a routerLink="/addCulture/{{currentData?._id}}" class="btn btn-outline-primary">Add culture</a>
+          <a routerLink="/removeCulture/{{currentData?._id}}" class="btn btn-outline-primary">Remove culture</a>
+          <a routerLink="/makeHarvest/{{currentData?._id}}" class="btn btn-outline-primary" >Harvest</a>
+          <br/>
+      </div>
+  
+  </div>
+</div>

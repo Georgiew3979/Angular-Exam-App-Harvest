@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink="/">Harvest</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/homeWorkers">Home
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <div *ngIf="!authService.isLoggedIn()" class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/register">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" routerLink="/login">Login</a>
+        </li>
+      </div>
+      <div *ngIf="authService.isUserWorker() || authService.isUserAdmin()" class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/registerField">Create Field</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/registerCulture">Create Culture</a>
+        </li>
+
+      </div>
+      <div *ngIf="authService.isUserAdmin()" class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/users">Manage users</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/fields">Manage Fields</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/cultures">Manage Cultures</a>
+        </li>
+      </div>
+      <div *ngIf="authService.isLoggedIn()" class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/logout">Log out</a>
+        </li>
+      </div>
+    </ul>
+    <div *ngIf="authService.isLoggedIn()">
+      Welcome, <strong>{{username}}</strong> you are logged in as <strong>{{userRole | formatRoleIdToText}}</strong>
+    </div>
+
+  </div>
+</nav>

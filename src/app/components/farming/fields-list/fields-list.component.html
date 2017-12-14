@@ -1,0 +1,14 @@
+<div class="row marketing">
+  <div class="col-md-12">
+    <ul class="list-group" *ngFor="let field of fieldsDataLeft | paginate: { itemsPerPage: 3, currentPage: p }">
+      <li class="field-block">
+        <app-field [currentData]="field"></app-field>
+      </li>
+      <hr>
+    </ul>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+
+  
+    
+</div>

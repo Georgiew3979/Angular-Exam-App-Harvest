@@ -1,0 +1,51 @@
+<h1>Update Cultures</h1>
+
+<div class="container">
+  <h1>Update Culture</h1>
+  <form (ngSubmit)="update()" #updateForm="ngForm">
+    <div class="form-group">
+      <label for="name">Name of culture</label>
+      <input type="text" class="form-control"  id="name"
+      required
+      [(ngModel)]="model.name"
+     name="name"
+      #name="ngModel">
+      <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+        Name is required!
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="type">Type</label>
+      <input type="text" class="form-control" id="type"
+      required
+      [(ngModel)]="model.type"
+      name = "model.type"
+      #type="ngModel">
+      <div [hidden]="type.valid || type.pristine" class="alert alert-danger">
+        Type is required!
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="imageLink">Link of image </label>
+      <input type="text" class="form-control" id="imageLink"
+      required
+      [(ngModel)]="model.imageLink"
+      name="imageLink"
+      #imageLink="ngModel">
+      <div [hidden]="imageLink.valid || imageLink.pristine" class="alert alert-danger">
+          Link of image is required!
+      </div>
+    </div>
+
+    
+    <button [disabled]="!updateForm.form.valid" type="submit" class="btn btn-success">Submit</button>    
+  </form>
+  <div *ngIf="registerSuccess" class="alert alert-success">
+    Successfull Registered {{registeredField | json}}!
+  </div>
+  <div *ngIf="registerFail" class="alert alert-danger">
+      Field name already exists!
+  </div>
+</div>

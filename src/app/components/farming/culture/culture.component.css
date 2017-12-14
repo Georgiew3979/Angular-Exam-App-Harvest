@@ -1,0 +1,9 @@
+img {
+  width: 140px;
+  height: 140px;
+}
+
+.inside {
+  display: inline-block;
+  padding: 10px;
+}

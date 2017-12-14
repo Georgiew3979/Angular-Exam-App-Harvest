@@ -1,0 +1,31 @@
+<h1>Manage Users</h1>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Registered</th>
+      <th>Role</th>
+      <th>Action</th>
+
+    </tr>
+  </thead>
+  <tbody>
+      <tr  *ngFor="let user of allUsers | paginate: { itemsPerPage: 8, currentPage: p }; let i = index">
+        
+        <th scope="row">{{i + 1}}</th>
+        <td>{{user.username}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user._kmd.ect}}</td>
+        <td *ngIf="user._kmd.roles">{{user._kmd.roles[0].roleId | formatRoleIdToText}}</td>
+        <td>
+          <button (click)="deleteUser(user)">Delete</button>
+          <button (click)="setUserToWorker(user._id)">Up to worker</button>
+        </td>
+    </tr>
+   
+  </tbody>
+</table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+

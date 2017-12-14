@@ -1,0 +1,17 @@
+<li class="list-group-item">
+  <div class="container">
+    <img class="rounded-circle" src="{{currentCulture?.imageLink}}" alt="imageLink">
+    <h4 class="inside">{{currentCulture?.name}} - {{currentCulture?.type}}</h4>
+    <h6 *ngIf="!isAddCulture"
+    class="float-md-right"
+    >Date of seeding: {{currentCulture._kmd?.ect | date:"fullDate"}}</h6>
+    <div class=" inside justify-content-md-center" *ngIf="currentCulture.crop">
+      <p class="inside bg-info"  >{{currentCulture.crop}} kg harvested untill now </p>
+      <span class="inside alert alert-warning float-md-right" role="alert">
+        Soon bargin sale!.
+    </span>
+    </div>
+
+  </div>
+  
+</li>
